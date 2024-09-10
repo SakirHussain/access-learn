@@ -51,7 +51,12 @@ android {
 
 dependencies {
 
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+    val nav_version = "2.8.0"
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation("androidx.compose.material:material-icons-extended:1.1.0")
     implementation(libs.androidx.core.ktx)
+    implementation ("androidx.compose.material:material-icons-extended:1.1.0")
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
