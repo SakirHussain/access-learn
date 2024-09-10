@@ -2,28 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="PreviewCustomScoreScreen">
-        <State />
-      </entry>
-      <entry key="PreviewScoreScreen">
-        <State />
-      </entry>
-      <entry key="PreviewScoreScreen (1)">
-        <State />
-      </entry>
-      <entry key="PreviewThemedScoreScreen">
-      <entry key="YesNoQuizScreenPreview">
-        <State />
-      </entry>
-      <entry key="YesNoQuizScreenPreview (1)">
-        <State />
-      </entry>
-      <entry key="YesNoQuizScreenPreview (2)">
-        <State />
-      </entry>
-      <entry key="YesNoQuizScreenPreview (3)">
-        <State />
-      </entry>
       <entry key="app">
         <State />
       </entry>

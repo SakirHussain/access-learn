@@ -29,13 +29,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.access_learn.R
 import kotlinx.coroutines.delay
 import java.util.Locale
 
 
 @Composable
-fun LanguageLearningApp() {
+fun LanguageLearningApp2(navController: NavController) {
     var tts: TextToSpeech? = null
     val context = LocalContext.current
 
@@ -50,7 +51,8 @@ fun LanguageLearningApp() {
     YesNoQuizScreen(
         onSpeakRequest = { text ->
             tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
-        }
+        },
+        navigate = navController
     )
 
     DisposableEffect(Unit) {
@@ -61,7 +63,7 @@ fun LanguageLearningApp() {
 }
 
 @Composable
-fun YesNoQuizScreen(onSpeakRequest: (String) -> Unit) {
+fun YesNoQuizScreen(onSpeakRequest: (String) -> Unit, navigate: NavController) {
     // State variables to store answers and track current question
     var score by remember { mutableStateOf(0) }
     var currentQuestion by remember { mutableStateOf(0) }
@@ -232,16 +234,17 @@ fun YesNoQuizScreen(onSpeakRequest: (String) -> Unit) {
                     }
                 } else {
                     // Show the score when the quiz is finished
-                    Text(
-                        text = "Your score: $score / ${questions.size}",
-                        style = MaterialTheme.typography.headlineMedium.copy(
-                            fontFamily = customFont,
-                            fontWeight = FontWeight.Bold
-                        ),
-                        color = textColor, // Darker grey for the score text
-                        modifier = Modifier
-                            .clickable { onSpeakRequest("Your score is $score out of ${questions.size}") } // Reads out the score on tap
-                    )
+//                    Text(
+//                        text = "Your score: $score / ${questions.size}",
+//                        style = MaterialTheme.typography.headlineMedium.copy(
+//                            fontFamily = customFont,
+//                            fontWeight = FontWeight.Bold
+//                        ),
+//                        color = textColor, // Darker grey for the score text
+//                        modifier = Modifier
+//                            .clickable { onSpeakRequest("Your score is $score out of ${questions.size}") } // Reads out the score on tap
+//                    )
+                    navigate.navigate("screen3")
                 }
             }
 
@@ -328,8 +331,8 @@ fun YesNoQuizScreen(onSpeakRequest: (String) -> Unit) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun YesNoQuizScreenPreview() {
-    LanguageLearningApp()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun YesNoQuizScreenPreview() {
+//    LanguageLearningApp2()
+//}

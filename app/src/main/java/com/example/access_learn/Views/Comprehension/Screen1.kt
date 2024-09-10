@@ -24,10 +24,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import java.util.*
 
 @Composable
-fun LanguageLearningApp() {
+fun LanguageLearningApp1(navController: NavController) {
     var tts: TextToSpeech? = null
     val context = LocalContext.current
 
@@ -63,7 +64,8 @@ fun LanguageLearningApp() {
             // Restart the recitation
             currentRecitationIndex = 0
             tts?.speak(textToRecite.value, TextToSpeech.QUEUE_FLUSH, null, "")
-        }
+        },
+        navController = navController
     )
 
     DisposableEffect(Unit) {
@@ -78,7 +80,8 @@ fun LandingPage(
     text: String,
     onSpeakRequest: (String) -> Unit,
     onContinueRequest: () -> Unit,
-    onRestartRequest: () -> Unit
+    onRestartRequest: () -> Unit,
+    navController: NavController
 ) {
     val hapticFeedback = LocalHapticFeedback.current
 
@@ -155,7 +158,7 @@ fun LandingPage(
                 Button(
                     onClick = {
                         hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                        onContinueRequest()
+                        navController.navigate("screen2")
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xE6AA5FEC)),
                     modifier = Modifier
@@ -233,8 +236,8 @@ fun LandingPage(
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun MyPreview() {
-    LanguageLearningApp()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun MyPreview() {
+//    LanguageLearningApp1()
+//}

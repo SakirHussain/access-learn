@@ -24,7 +24,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import java.util.*
 
 @Composable
-fun LanguageLearningApp() {
+fun LanguageLearningApp3() {
     var tts: TextToSpeech? = null
     val context = LocalContext.current
 
@@ -261,5 +261,5 @@ fun CustomScoreScreen(
 @Preview(showBackground = true)
 @Composable
 fun PreviewCustomScoreScreen() {
-    LanguageLearningApp()
+    LanguageLearningApp3()
 }
